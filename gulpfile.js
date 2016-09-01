@@ -12,7 +12,12 @@ gulp.task('styles', function() {
         .pipe(browserSync.stream()));
 });
 
-gulp.task('typescript', function () {
+gulp.task('jslib', function() {
+    return gulp.src('src/scripts/lib/**/*.js')
+        .pipe(gulp.dest('built/scripts/lib'))
+});
+
+gulp.task('typescript', ['jslib'], function () {
     return gulp.src('src/scripts/**/*.ts')
         .pipe(ts({
             noImplicitAny: true//,
@@ -30,12 +35,12 @@ gulp.task('javascript', ['typescript'], function () {
 
 gulp.task('scripts', ['javascript']); // Add other script operations
 
-gulp.task('html', ['styles', 'scripts'], function() {
+gulp.task('html', function() {
   return gulp.src('src/**/*.html')
     .pipe(gulp.dest('built'));
 });
 
-gulp.task('update', ['html']);
+gulp.task('update', ['styles', 'scripts', 'html']);
 
 gulp.task('serve', ['update'], function() {
 
@@ -45,6 +50,8 @@ gulp.task('serve', ['update'], function() {
 
     gulp.watch('src/styles/**/*.scss', ['sass']);
     gulp.watch('src/scripts/**/*.ts', ['scripts']);
+    gulp.watch('src/scripts/lib/**/*.js', ['jslib']);
+    gulp.watch('src/**/*.html', ['html']);
     gulp.watch('src/**/*.html').on('change', browserSync.reload);
 });
 
