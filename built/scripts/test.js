@@ -1,4 +1,3 @@
 /// <reference path="lib/jquery.d.ts" />
-var test = 'hello';
+var test = 'hello world';
 console.log(test);
-$('#welcome').text('Hello Kev!');
