@@ -5,11 +5,11 @@ var uglify = require('gulp-uglify');
 var ts = require('gulp-typescript');
 var sass = require('gulp-sass');
 
-gulp.task('styles', function() {
+gulp.task('sass', function() {
     return gulp.src('src/styles/**/*.scss')
-        .pipe(sass())
-        .pipe(gulp.dest('built/styles')
-        .pipe(browserSync.stream()));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('built/styles'));
+        //.pipe(browserSync.stream()));
 });
 
 gulp.task('jslib', function() {
@@ -40,7 +40,7 @@ gulp.task('html', function() {
     .pipe(gulp.dest('built'));
 });
 
-gulp.task('update', ['styles', 'scripts', 'html']);
+gulp.task('update', ['sass', 'scripts', 'html']);
 
 gulp.task('serve', ['update'], function() {
 
