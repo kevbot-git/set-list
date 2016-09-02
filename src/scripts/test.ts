@@ -1,5 +1,5 @@
+/// <reference path="lib/jquery.d.ts" />
 var test: string = 'hello';
 console.log(test);
 
-var welcome: HTMLElement = $('#welcome')[0];
-welcome.innerHTML = 'Hello there!';
+$('#welcome').text('TESTING!');
