@@ -1,1 +1,92 @@
 // SASS styles
+
+$accent: #337AB7;
+$accent-alt: #FFFFFF;
+
+@font-face {
+	font-family: 'Bandless';
+	src: url('/fonts/BandwidthBandlessBRK.eot');
+	src: url('/fonts/BandwidthBandlessBRK.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/BandwidthBandlessBRK.woff2') format('woff2'),
+		url('/fonts/BandwidthBandlessBRK.woff') format('woff'),
+		url('/fonts/BandwidthBandlessBRK.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Bandwidth';
+	src: url('/fonts/BandwidthBRK.eot');
+	src: url('/fonts/BandwidthBRK.eot?#iefix') format('embedded-opentype'),
+		url('/fonts/BandwidthBRK.woff2') format('woff2'),
+		url('/fonts/BandwidthBRK.woff') format('woff'),
+		url('/fonts/BandwidthBRK.ttf') format('truetype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin blur($px: 0) {
+    -webkit-filter: blur(#{$px}px) !important;
+    -ms-filter: blur(#{$px}px) !important;
+    -moz-filter: blur(#{$px}px) !important;
+    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'blur\'><feGaussianBlur stdDeviation=\'#{$px}\' /></filter></svg>#blur");
+    filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='#{$px}');
+}
+
+body {
+    background: #BFBFBF;
+}
+
+// .navbar-fixed-top {
+//     //background: rgba(250, 250, 250, 0.5);
+// }
+
+nav {
+    .btn {
+        margin-left: 12px;
+    }
+    .navbar-brand {
+        font-family: 'Bandless';
+        font-size: 36px;
+        line-height: 26px;
+        color: $accent-alt;
+    }
+}
+
+header {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    background-position: center;
+    background-image: url('/images/bg.png');
+    // background: #333333;
+    text-align: center;
+    color: white;
+
+    .header-title {
+        font-family: 'Bandwidth';
+        font-size: 120px;
+        margin-bottom: 64px;
+    }
+}
+
+header .header-content {
+    position: relative;
+    text-align: center;
+    padding: 100px 15px 100px;
+    width: 100%;
+}
+
+hr {
+    margin: 30px auto;
+    width: 30%;
+    border-top: 4px solid $accent;
+}
+
+hr.light {
+    border-top: 4px solid $accent-alt !important;
+}
