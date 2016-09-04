@@ -1,15 +1,8 @@
 @font-face {
-  font-family: 'Bandless';
-  src: url("/fonts/BandwidthBandlessBRK.eot");
-  src: url("/fonts/BandwidthBandlessBRK.eot?#iefix") format("embedded-opentype"), url("/fonts/BandwidthBandlessBRK.woff2") format("woff2"), url("/fonts/BandwidthBandlessBRK.woff") format("woff"), url("/fonts/BandwidthBandlessBRK.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal; }
-
-@font-face {
-  font-family: 'Bandwidth';
-  src: url("/fonts/BandwidthBRK.eot");
-  src: url("/fonts/BandwidthBRK.eot?#iefix") format("embedded-opentype"), url("/fonts/BandwidthBRK.woff2") format("woff2"), url("/fonts/BandwidthBRK.woff") format("woff"), url("/fonts/BandwidthBRK.ttf") format("truetype");
-  font-weight: normal;
+  font-family: 'mr-mac';
+  src: url("Mr_Marcoozie_MEDIUM.eot");
+  src: url("Mr_Marcoozie_MEDIUM.eot?#iefix") format("embedded-opentype"), url("Mr_Marcoozie_MEDIUM.woff2") format("woff2"), url("Mr_Marcoozie_MEDIUM.woff") format("woff"), url("Mr_Marcoozie_MEDIUM.ttf") format("truetype");
+  font-weight: 500;
   font-style: normal; }
 
 body {
@@ -17,12 +10,6 @@ body {
 
 nav .btn {
   margin-left: 12px; }
-
-nav .navbar-brand {
-  font-family: 'Bandless';
-  font-size: 36px;
-  line-height: 26px;
-  color: #FFFFFF; }
 
 header {
   position: relative;
@@ -37,7 +24,7 @@ header {
   text-align: center;
   color: white; }
   header .header-title {
-    font-family: 'Bandwidth';
+    font-family: 'mr-mac';
     font-size: 120px;
     margin-bottom: 64px; }
 
