@@ -1,32 +1,61 @@
 @font-face {
-  font-family: 'mr-mac';
-  src: url("Mr_Marcoozie_MEDIUM.eot");
-  src: url("Mr_Marcoozie_MEDIUM.eot?#iefix") format("embedded-opentype"), url("Mr_Marcoozie_MEDIUM.woff2") format("woff2"), url("Mr_Marcoozie_MEDIUM.woff") format("woff"), url("Mr_Marcoozie_MEDIUM.ttf") format("truetype");
+  font-family: 'logo';
+  src: url("/fonts/Mr_Marcoozie_MEDIUM.eot");
+  src: url("/fonts/Mr_Marcoozie_MEDIUM.eot?#iefix") format("embedded-opentype"), url("/fonts/Mr_Marcoozie_MEDIUM.woff2") format("woff2"), url("/fonts/Mr_Marcoozie_MEDIUM.woff") format("woff"), url("/fonts/Mr_Marcoozie_MEDIUM.ttf") format("truetype");
   font-weight: 500;
   font-style: normal; }
 
 body {
-  background: #BFBFBF; }
+  background: #F0F0F0 url("/images/paper.png") repeat; }
 
 nav .btn {
   margin-left: 12px; }
 
-header {
+nav .navbar-brand {
+  font-family: 'logo';
+  font-size: 38px;
+  line-height: 22px;
+  color: #FFFFFF !important; }
+
+.logo-text {
+  font-family: 'logo'; }
+
+.catchphrase {
   position: relative;
-  width: 100%;
-  min-height: auto;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
-  background-position: center;
-  background-image: url("/images/bg.png");
-  text-align: center;
-  color: white; }
-  header .header-title {
-    font-family: 'mr-mac';
-    font-size: 120px;
-    margin-bottom: 64px; }
+  left: 50%;
+  margin-left: -160px;
+  display: block !important;
+  width: 320px !important;
+  height: 146px !important;
+  text-align: center; }
+  .catchphrase h1 {
+    position: relative;
+    padding-top: 30px !important; }
+  .catchphrase .getready {
+    position: absolute;
+    top: -12px;
+    left: 8px;
+    color: #FF0000; }
+  .catchphrase .go {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    color: #0000FF; }
+
+header {
+  margin-top: 108px; }
+
+h1.logo-text {
+  font-size: 80px; }
+
+h2.logo-text {
+  font-size: 64px; }
+
+h3.logo-text {
+  font-size: 48px; }
+
+h4.logo-text {
+  font-size: 32px; }
 
 header .header-content {
   position: relative;
