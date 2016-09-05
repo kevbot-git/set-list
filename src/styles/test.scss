@@ -48,6 +48,13 @@ nav {
         line-height: 22px;
         color: $accent-alt !important;
     }
+    .login-link {
+        cursor: pointer;
+        -webkit-user-select: none;  
+        -moz-user-select: none;    
+        -ms-user-select: none;      
+        user-select: none;
+    }
 }
 
 .logo-text {
@@ -118,6 +125,10 @@ header .header-content {
     text-align: center;
     padding: 100px 15px 100px;
     width: 100%;
+}
+
+.login-container {
+    text-align: center;
 }
 
 hr {

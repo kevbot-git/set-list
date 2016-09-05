@@ -16,3 +16,6 @@ $(window).on('scroll', function () {
         headerTitle.css('opacity', 0);
     }
 });
+$('.login-link').click(function () {
+    $('.login-container').effect('shake', { 'distance': 5 });
+});
