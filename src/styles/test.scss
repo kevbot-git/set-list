@@ -32,12 +32,19 @@ body {
 // }
 
 nav {
+    li {
+        font-family: 'logo';
+        font-size: 20px !important;
+    }
+    .dropdown-header {
+        font-size: 16px !important;
+    }
     .btn {
         margin-left: 12px;
     }
     .navbar-brand {
         font-family: 'logo';
-        font-size: 38px;
+        font-size: 38px !important;
         line-height: 22px;
         color: $accent-alt !important;
     }

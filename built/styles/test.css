@@ -8,12 +8,19 @@
 body {
   background: #F0F0F0 url("/images/paper.png") repeat; }
 
+nav li {
+  font-family: 'logo';
+  font-size: 20px !important; }
+
+nav .dropdown-header {
+  font-size: 16px !important; }
+
 nav .btn {
   margin-left: 12px; }
 
 nav .navbar-brand {
   font-family: 'logo';
-  font-size: 38px;
+  font-size: 38px !important;
   line-height: 22px;
   color: #FFFFFF !important; }
 

@@ -4,8 +4,8 @@ console.log(test);
 var headerTitle = $('header');
 $(window).on('scroll', function () {
     var y = window.pageYOffset;
-    var threshold = headerTitle.position().top;
-    var cutoff = headerTitle.height() + threshold + 50;
+    var threshold = headerTitle.position().top + 20;
+    var cutoff = headerTitle.height() + threshold - 40;
     if (y <= threshold) {
         headerTitle.css('opacity', 1);
     }
