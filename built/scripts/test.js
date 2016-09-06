@@ -1,4 +1,5 @@
 /// <reference path="lib/jquery.d.ts" />
+/// <reference path="lib/jqueryui.d.ts" />
 var test = 'hello world';
 console.log(test);
 var headerTitle = $('header');
@@ -17,5 +18,6 @@ $(window).on('scroll', function () {
     }
 });
 $('.login-link').click(function () {
-    $('.login-container').effect('shake', { 'distance': 5 });
+    $('.login-container').effect('shake', { 'distance': 5, 'times': 2 });
+    checkLoginState();
 });

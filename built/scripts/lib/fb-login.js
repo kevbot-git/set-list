@@ -8,10 +8,7 @@ function statusChangeCallback(response) {
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
         // Logged into your app and Facebook.
-        console.log('connected');
         testAPI();
-        document.title = "Opening dashboard..."
-        window.location = "http://google.co.nz/";
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.
     } else {
@@ -23,11 +20,12 @@ function statusChangeCallback(response) {
 // This function is called when someone finishes with the Login
 // Button.  See the onlogin handler attached to it in the sample
 // code below.
-// function checkLoginState() {
-//     FB.getLoginStatus(function (response) {
-//         statusChangeCallback(response);
-//     });
-// }
+function checkLoginState() {
+    console.log('checking facebook login status...');
+    FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+    });
+}
 
 window.fbAsyncInit = function () {
     FB.init({

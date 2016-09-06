@@ -1,4 +1,8 @@
 /// <reference path="lib/jquery.d.ts" />
+/// <reference path="lib/jqueryui.d.ts" />
+
+declare function checkLoginState(): void;
+
 var test: string = 'hello world';
 console.log(test);
 
@@ -18,5 +22,6 @@ $(window).on('scroll', function() {
 });
 
 $('.login-link').click(function() {
-    $('.login-container').effect('shake', {'distance': 5});
+    $('.login-container').effect('shake', {'distance': 5, 'times': 2});
+    checkLoginState();
 });

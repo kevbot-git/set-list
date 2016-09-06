@@ -48,13 +48,14 @@ nav {
         line-height: 22px;
         color: $accent-alt !important;
     }
-    .login-link {
-        cursor: pointer;
-        -webkit-user-select: none;  
-        -moz-user-select: none;    
-        -ms-user-select: none;      
-        user-select: none;
-    }
+}
+
+.a-nolink {
+    cursor: pointer;
+    -webkit-user-select: none;  
+    -moz-user-select: none;    
+    -ms-user-select: none;      
+    user-select: none;
 }
 
 .logo-text {

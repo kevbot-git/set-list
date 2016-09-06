@@ -24,7 +24,7 @@ nav .navbar-brand {
   line-height: 22px;
   color: #FFFFFF !important; }
 
-nav .login-link {
+.a-nolink {
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
