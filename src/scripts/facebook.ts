@@ -1,13 +1,40 @@
 /// <reference path="lib/fbsdk.d.ts" />
 
 const APP_ID: string = '159095714518707';
+var initialized: boolean = false;
 
-window.fbAsyncInit = function() {
-    FB.init({
-        appId: APP_ID,
-        cookie: true,  // enable cookies to allow the server to access 
-        // the session
-        xfbml: true,  // parse social plugins on this page
-        version: 'v2.7' // use graph api version 2.5
+console.log('test');
+
+initFacebook();
+
+function checkLoginState(): Object {
+    console.log('Checking login state...');
+    var r: Object;
+    FB.getLoginStatus(function(response: Object) {
+        r = response;
     });
-};
+    return r;
+}
+
+function initFacebook(): void {
+    console.log('Initializing Facebook...');
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId: APP_ID,
+            cookie: true,
+            xfbml: true,
+            version: 'v2.7' // use graph api version 2.7
+        });
+    };
+
+    try {
+        FB.getLoginStatus(function(respoonse){ });
+        initialized = true;
+    } catch (ReferenceError) {
+        initialized = false;
+    }
+
+    console.log(initialized);
+
+    console.log(checkLoginState());
+}

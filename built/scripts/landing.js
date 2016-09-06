@@ -1,10 +1,8 @@
 /// <reference path="lib/jquery.d.ts" />
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
-var test = 'hello world';
-console.log(test);
+// document assumed to be loaded at this point
 var headerTitle = $('header');
-alert(APP_ID);
 $(window).on('scroll', function () {
     var y = window.pageYOffset;
     var threshold = headerTitle.position().top + 20;
