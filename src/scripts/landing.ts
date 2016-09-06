@@ -1,12 +1,13 @@
 /// <reference path="lib/jquery.d.ts" />
 /// <reference path="lib/jqueryui.d.ts" />
-
-declare function checkLoginState(): void;
+/// <reference path="facebook.ts" />
 
 var test: string = 'hello world';
 console.log(test);
 
 var headerTitle = $('header');
+
+alert(APP_ID);
 
 $(window).on('scroll', function() {
     var y: number = window.pageYOffset;
@@ -23,5 +24,5 @@ $(window).on('scroll', function() {
 
 $('.login-link').click(function() {
     $('.login-container').effect('shake', {'distance': 5, 'times': 2});
-    checkLoginState();
+    //checkLoginState();
 });
