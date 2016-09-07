@@ -13,6 +13,7 @@ function checkLoginState() {
 }
 function initFacebook() {
     console.log('Initializing Facebook...');
+    initialized = false;
     window.fbAsyncInit = function () {
         FB.init({
             appId: APP_ID,
@@ -20,14 +21,8 @@ function initFacebook() {
             xfbml: true,
             version: 'v2.7' // use graph api version 2.7
         });
-    };
-    try {
-        FB.getLoginStatus(function (respoonse) { });
         initialized = true;
-    }
-    catch (ReferenceError) {
-        initialized = false;
-    }
+    };
     console.log(initialized);
     console.log(checkLoginState());
 }
