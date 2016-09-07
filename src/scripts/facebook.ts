@@ -34,3 +34,11 @@ function initFacebook(): void {
 
     console.log(checkLoginState());
 }
+
+(function (d: any, s: any, id: any) {
+    var js: any, fjs: any = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+} (document, 'script', 'facebook-jssdk'));
