@@ -13,8 +13,8 @@ function checkLoginState() {
 }
 function initFacebook() {
     console.log('Initializing Facebook...');
-    initialized = false;
     window.fbAsyncInit = function () {
+        initialized = false;
         FB.init({
             appId: APP_ID,
             cookie: true,
