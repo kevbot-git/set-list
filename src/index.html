@@ -26,6 +26,8 @@
 </head>
 
 <body>
+    <!-- Load jQuery -->
+    <script src="/scripts/lib/jquery.min.js"></script>
     <!-- Load Facebook SDK -->
     <script type="text/javascript" src="/scripts/facebook.js"></script>
 
@@ -74,10 +76,12 @@
             </div>
         </header>
 
+        <div class="login-container">
+            <div id="facebook-login" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
+        </div>
+
         <section>
-            <div class="login-container">
-                <div id="facebook-login" class="fb-login-button" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="true"></div>
-            </div>
+            <h2>Manage set lists with ease!</h2>
         </section>
 
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
@@ -100,7 +104,6 @@
     <!-- <div class="fb-like" data-share="true" data-width="450" data-show-faces="false"></div> -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="/scripts/lib/jquery.min.js"></script>
     <script src="/scripts/lib/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/scripts/lib/bootstrap.min.js"></script>

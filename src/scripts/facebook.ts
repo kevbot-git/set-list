@@ -1,35 +1,48 @@
 /// <reference path="lib/fbsdk.d.ts" />
 
 const APP_ID: string = '159095714518707';
-var initialized: boolean = false;
+var fbInitialized: boolean = false;
 
-console.log('attempt #456745674567');
+declare var test1: string;
 
-// function checkLoginState(): Object {
-//     console.log('Checking login state...');
-//     var r: Object;
-//     FB.getLoginStatus(function(response: Object) {
-//         r = response;
-//     });
-//     return r;
-// }
-
-console.log('Initializing Facebook...');
-
-window.fbAsyncInit = function() {
-    // initialized = false;
-    FB.init({
-        appId: APP_ID,
-        cookie: true,
-        xfbml: true,
-        version: 'v2.7' // use graph api version 2.7
+$(document).ready(function () {
+    $.ajaxSetup({ cache: true });
+    console.log('Initializing Facebook...');
+    $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
+        FB.init({
+            appId: APP_ID,
+            cookie: true,
+            xfbml: true,
+            version: 'v2.7' // use graph api version 2.7
+        });
+        console.log('Done.');
+        console.log(test1);
+        checkLoginState({
+            loggedIn() {
+                console.log('logged in!');
+            },
+            needsAuth() {
+                console.log('needs auth');
+            },
+            notLoggedIn() {
+                console.log('not logged in');
+            }
+        });
     });
-    initialized = true;
-};
+});
 
-console.log(initialized);
-
-// console.log(checkLoginState());
+function checkLoginState(callback: FbStatusResponse) {
+    console.log('checking facebook login status...');
+    FB.getLoginStatus(function (response) {
+        if (response.status === 'connected') {
+            callback.loggedIn();
+        } else if (response.status === 'not_authorized') {
+            callback.needsAuth();
+        } else {
+            callback.notLoggedIn();
+        }
+    });
+}
 
 (function (d: any, s: any, id: any) {
     var js: any, fjs: any = d.getElementsByTagName(s)[0];
@@ -38,3 +51,13 @@ console.log(initialized);
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 } (document, 'script', 'facebook-jssdk'));
+
+interface FbStatusResponse {
+    loggedIn?(): void;
+    needsAuth?(): void;
+    notLoggedIn?(): void;
+}
+
+// $(window).load(function() {
+//     console.log('progress');
+// });

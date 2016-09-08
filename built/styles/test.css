@@ -24,6 +24,10 @@ nav .navbar-brand {
   line-height: 22px;
   color: #FFFFFF !important; }
 
+section {
+  margin-bottom: 64px;
+  text-align: center; }
+
 .a-nolink {
   cursor: pointer;
   -webkit-user-select: none;
@@ -78,7 +82,8 @@ header .header-content {
   width: 100%; }
 
 .login-container {
-  text-align: center; }
+  text-align: center;
+  height: 80px; }
 
 hr {
   margin: 30px auto;

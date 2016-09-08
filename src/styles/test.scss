@@ -50,6 +50,11 @@ nav {
     }
 }
 
+section {
+    margin-bottom: 64px;
+    text-align: center;
+}
+
 .a-nolink {
     cursor: pointer;
     -webkit-user-select: none;  
@@ -100,27 +105,6 @@ h2.logo-text { font-size: 64px; }
 h3.logo-text { font-size: 48px; }
 h4.logo-text { font-size: 32px; }
 
-// header {
-//     position: relative;
-//     width: 100%;
-//     min-height: auto;
-//     -webkit-background-size: cover;
-//     -moz-background-size: cover;
-//     background-size: cover;
-//     -o-background-size: cover;
-//     background-position: center;
-//     background-image: url('/images/bg.png');
-//     // background: #333333;
-//     text-align: center;
-//     color: white;
-
-//     .header-title {
-//         font-family: 'logo';
-//         font-size: 120px;
-//         margin-bottom: 64px;
-//     }
-// }
-
 header .header-content {
     position: relative;
     text-align: center;
@@ -130,6 +114,7 @@ header .header-content {
 
 .login-container {
     text-align: center;
+    height: 80px;
 }
 
 hr {

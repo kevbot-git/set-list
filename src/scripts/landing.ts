@@ -4,6 +4,8 @@
 
 // document assumed to be loaded at this point
 
+var test1: string = 'Successssss';
+
 var headerTitle = $('header');
 
 $(window).on('scroll', function() {

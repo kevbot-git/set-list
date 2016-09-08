@@ -2,6 +2,7 @@
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
 // document assumed to be loaded at this point
+var test1 = 'Successssss';
 var headerTitle = $('header');
 $(window).on('scroll', function () {
     var y = window.pageYOffset;
