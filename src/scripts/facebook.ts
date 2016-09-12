@@ -1,7 +1,7 @@
 /// <reference path="lib/fbsdk.d.ts" />
 
 const APP_ID: string = '159095714518707';
-var facebookManager: FacebookManager;
+export var facebookManager: FacebookManager;
 
 $(document).ready(function () {
     facebookManager = new FacebookManager();
@@ -20,10 +20,10 @@ class FacebookManager {
 
     public constructor() {
         console.log('Initializing FacebookManager');
-        this.sdk = this.init();
+        this.init();
     }
 
-    private init(): FBSDK {
+    private init(): void {
         $.ajaxSetup({ cache: true });
         console.log('Initializing Facebook...');
         $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
@@ -34,9 +34,9 @@ class FacebookManager {
                 version: 'v2.7' // use graph api version 2.7
             });
             console.log('Done.');
-            return FB;
+            this.sdk = FB;
         });
-        throw new FacebookError();
+
     }
 
     public checkLoginState(callback: FbStatusResponse) {
@@ -55,6 +55,7 @@ class FacebookManager {
 class FacebookError extends Error {
     constructor() {
         super('Could not connect.');
+        this.name = 'FacebookError';
     }
 }
 
