@@ -31,12 +31,18 @@ $(document).ready(function () {
 function checkLoginState(callback: FbStatusResponse) {
     console.log('checking facebook login status...');
     FB.getLoginStatus(function (response: any) {
-        if (response.status === 'connected') {
-            callback.loggedIn();
-        } else if (response.status === 'not_authorized') {
-            callback.needsAuth();
-        } else {
-            callback.notLoggedIn();
+        try {
+            if (response.status === 'connected') {
+                callback.loggedIn();
+            } else if (response.status === 'not_authorized') {
+                callback.needsAuth();
+            } else {
+                callback.notLoggedIn();
+            }
+        } catch(e) {
+            if(e instanceof TypeError) {
+                console.log('No callback for response');
+            }
         }
     });
 }
