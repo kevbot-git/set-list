@@ -14,6 +14,9 @@ $(document).ready(function () {
         console.log('Done.');
         console.log(test1);
         checkLoginState({
+            loggedIn: function () {
+                console.log('logged in');
+            },
             needsAuth: function () {
                 console.log('needs auth');
             },
