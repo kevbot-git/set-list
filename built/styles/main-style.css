@@ -35,8 +35,11 @@ section {
   -ms-user-select: none;
   user-select: none; }
 
-.logo-text {
+.logo-text, p, h1, h2, h3, h4 {
   font-family: 'logo'; }
+
+p {
+  font-size: 22px; }
 
 .catchphrase {
   position: relative;
@@ -63,16 +66,16 @@ section {
 header {
   margin-top: 108px; }
 
-h1.logo-text {
+h1 {
   font-size: 80px; }
 
-h2.logo-text {
+h2 {
   font-size: 64px; }
 
-h3.logo-text {
+h3 {
   font-size: 48px; }
 
-h4.logo-text {
+h4 {
   font-size: 32px; }
 
 header .header-content {

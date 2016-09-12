@@ -1,9 +1,8 @@
 /// <reference path="lib/fbsdk.d.ts" />
 
 const APP_ID: string = '159095714518707';
-var fbInitialized: boolean = false;
 
-declare var test1: string;
+declare function facebookLoaded(): void;
 
 $(document).ready(function () {
     $.ajaxSetup({ cache: true });
@@ -16,18 +15,6 @@ $(document).ready(function () {
             version: 'v2.7' // use graph api version 2.7
         });
         console.log('Done.');
-        console.log(test1);
-        checkLoginState({
-            loggedIn() {
-                console.log('logged in');
-            },
-            needsAuth() {
-                console.log('needs auth');
-            },
-            notLoggedIn() {
-                console.log('not logged in');
-            }
-        });
     });
 });
 
@@ -57,7 +44,3 @@ interface FbStatusResponse {
     needsAuth(): void;
     notLoggedIn(): void;
 }
-
-// $(window).load(function() {
-//     console.log('progress');
-// });

@@ -27,10 +27,6 @@ body {
     background: #F0F0F0 url('/images/paper.png') repeat;
 }
 
-// .navbar-fixed-top {
-//     //background: rgba(250, 250, 250, 0.5);
-// }
-
 nav {
     li {
         font-family: 'logo';
@@ -67,6 +63,11 @@ section {
     font-family: 'logo';
 }
 
+p {
+    @extend .logo-text;
+    font-size: 22px;
+}
+
 .catchphrase {
     position: relative;
     left: 50%;
@@ -100,10 +101,12 @@ header {
     margin-top: 108px;
 }
 
-h1.logo-text { font-size: 80px; }
-h2.logo-text { font-size: 64px; }
-h3.logo-text { font-size: 48px; }
-h4.logo-text { font-size: 32px; }
+h1, h2, h3, h4 {@extend .logo-text;}
+
+h1 { font-size: 80px; }
+h2 { font-size: 64px; }
+h3 { font-size: 48px; }
+h4 { font-size: 32px; }
 
 header .header-content {
     position: relative;

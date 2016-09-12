@@ -1,6 +1,5 @@
 /// <reference path="lib/fbsdk.d.ts" />
 var APP_ID = '159095714518707';
-var fbInitialized = false;
 $(document).ready(function () {
     $.ajaxSetup({ cache: true });
     console.log('Initializing Facebook...');
@@ -12,18 +11,6 @@ $(document).ready(function () {
             version: 'v2.7' // use graph api version 2.7
         });
         console.log('Done.');
-        console.log(test1);
-        checkLoginState({
-            loggedIn: function () {
-                console.log('logged in');
-            },
-            needsAuth: function () {
-                console.log('needs auth');
-            },
-            notLoggedIn: function () {
-                console.log('not logged in');
-            }
-        });
     });
 });
 function checkLoginState(callback) {
@@ -49,6 +36,3 @@ function checkLoginState(callback) {
     js.src = "//connect.facebook.net/en_US/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
-// $(window).load(function() {
-//     console.log('progress');
-// }); 
