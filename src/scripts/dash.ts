@@ -2,6 +2,8 @@
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
 
+declare var facebookManager: FacebookManager;
+
 $(window).on('load', function() {
     facebookManager.checkLoginState({
         loggedIn(){ console.log('logged in'); },
