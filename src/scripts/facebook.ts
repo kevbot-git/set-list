@@ -15,6 +15,11 @@ $(document).ready(function () {
             version: 'v2.7' // use graph api version 2.7
         });
         console.log('Done.');
+        try {
+            facebookLoaded();
+        } catch(e) {
+            if(e instanceof ReferenceError) console.log('No facebookLoaded function found.');
+        }
     });
 });
 
@@ -29,7 +34,7 @@ function checkLoginState(callback: FbStatusResponse) {
             callback.notLoggedIn();
         }
     });
-}
+}   
 
 (function (d: any, s: any, id: any) {
     var js: any, fjs: any = d.getElementsByTagName(s)[0];
