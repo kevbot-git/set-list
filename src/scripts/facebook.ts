@@ -18,9 +18,6 @@ $(document).ready(function () {
         console.log('Done.');
         console.log(test1);
         checkLoginState({
-            loggedIn() {
-                console.log('logged in!');
-            },
             needsAuth() {
                 console.log('needs auth');
             },
@@ -33,7 +30,7 @@ $(document).ready(function () {
 
 function checkLoginState(callback: FbStatusResponse) {
     console.log('checking facebook login status...');
-    FB.getLoginStatus(function (response) {
+    FB.getLoginStatus(function (response: any) {
         if (response.status === 'connected') {
             callback.loggedIn();
         } else if (response.status === 'not_authorized') {
