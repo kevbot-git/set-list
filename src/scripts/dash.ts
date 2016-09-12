@@ -2,8 +2,8 @@
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
 
-$(document).ready(function() {
-    checkLoginState({
+$(window).on('load', function() {
+    facebookManager.checkLoginState({
         loggedIn(){ console.log('logged in'); },
         needsAuth(){ console.log('needs auth'); },
         notLoggedIn(){ console.log('not logged in'); }

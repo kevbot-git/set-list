@@ -17,10 +17,10 @@ $(window).on('scroll', function () {
         headerTitle.css('opacity', 0);
     }
 });
-function facebookLoaded() {
+$(window).on('load', function () {
     console.log('facebookLoaded called');
     $('.login-container').append('<p>Test</p>');
-}
+});
 $('.login-link').click(function () {
     $('.login-container').effect('shake', { 'distance': 5, 'times': 2 });
     //checkLoginState();
