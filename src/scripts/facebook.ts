@@ -18,6 +18,7 @@ $(document).ready(function () {
         console.log('Done.');
         console.log(test1);
         checkLoginState({
+            loggedIn() {},
             needsAuth() {
                 console.log('needs auth');
             },
@@ -31,18 +32,12 @@ $(document).ready(function () {
 function checkLoginState(callback: FbStatusResponse) {
     console.log('checking facebook login status...');
     FB.getLoginStatus(function (response: any) {
-        try {
-            if (response.status === 'connected') {
-                callback.loggedIn();
-            } else if (response.status === 'not_authorized') {
-                callback.needsAuth();
-            } else {
-                callback.notLoggedIn();
-            }
-        } catch(e) {
-            if(e instanceof TypeError) {
-                console.log('No callback for response');
-            }
+        if (response.status === 'connected') {
+            callback.loggedIn();
+        } else if (response.status === 'not_authorized') {
+            callback.needsAuth();
+        } else {
+            callback.notLoggedIn();
         }
     });
 }
@@ -56,9 +51,9 @@ function checkLoginState(callback: FbStatusResponse) {
 } (document, 'script', 'facebook-jssdk'));
 
 interface FbStatusResponse {
-    loggedIn?(): void;
-    needsAuth?(): void;
-    notLoggedIn?(): void;
+    loggedIn(): void;
+    needsAuth(): void;
+    notLoggedIn(): void;
 }
 
 // $(window).load(function() {
