@@ -24,6 +24,10 @@ nav .navbar-brand {
   line-height: 22px;
   color: #FFFFFF !important; }
 
+nav .glyphicon-plus {
+  font-size: 16px !important;
+  color: #02C510; }
+
 section {
   margin-bottom: 64px;
   text-align: center; }
@@ -37,6 +41,15 @@ section {
 
 .logo-text, p, h1, h2, h3, h4 {
   font-family: 'logo'; }
+
+.logo-text.small, p.small, h1.small, h2.small, h3.small, h4.small {
+  font-size: 12px; }
+
+.logo-text.medium, p.medium, h1.medium, h2.medium, h3.medium, h4.medium {
+  font-size: 18px; }
+
+.logo-text.large, p.large, h1.large, h2.large, h3.large, h4.large {
+  font-size: 24px; }
 
 p {
   font-size: 22px; }

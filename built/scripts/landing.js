@@ -3,6 +3,18 @@
 /// <reference path="facebook.ts" />
 // document assumed to be loaded at this point
 var headerTitle = $('header');
+$(document).ready(function () {
+    facebookManager = new FacebookManager({
+        onLoad: function () {
+            console.log('Loaded!');
+            facebookManager.checkLoginState({
+                loggedIn: function () { console.log('logged in'); },
+                needsAuth: function () { console.log('needs auth'); },
+                notLoggedIn: function () { console.log('not logged in'); }
+            });
+        }
+    });
+});
 $(window).on('scroll', function () {
     var y = window.pageYOffset;
     var threshold = headerTitle.position().top + 20;
@@ -17,10 +29,10 @@ $(window).on('scroll', function () {
         headerTitle.css('opacity', 0);
     }
 });
-$(window).on('load', function () {
-    console.log('facebookLoaded called');
-    $('.login-container').append('<p>Test</p>');
-});
+// $(window).on('load', function() {
+//     console.log('facebookLoaded called');
+//     $('.login-container').append('<p>Test</p>');
+// });
 $('.login-link').click(function () {
     $('.login-container').effect('shake', { 'distance': 5, 'times': 2 });
     //checkLoginState();

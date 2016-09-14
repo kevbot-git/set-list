@@ -4,26 +4,28 @@ const APP_ID: string = '159095714518707';
 var facebookManager: FacebookManager;
 
 $(document).ready(function () {
-    facebookManager = new FacebookManager();
+    FacebookManager.asyncInit();
 });
-
-(function (d: any, s: any, id: any) {
-    var js: any, fjs: any = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-} (document, 'script', 'facebook-jssdk'));
 
 class FacebookManager {
     private sdk: FBSDK;
 
-    public constructor() {
+    public constructor(onLoadCallback: FacebookLoadCallback) {
         console.log('Initializing FacebookManager');
-        this.init();
+        this.init(onLoadCallback);
     }
 
-    private init(): void {
+    public static asyncInit() {
+        (function (d: any, s: any, id: any) {
+            var js: any, fjs: any = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        } (document, 'script', 'facebook-jssdk'));
+    }
+
+    private init(onLoadCallback: FacebookLoadCallback): void {
         $.ajaxSetup({ cache: true });
         console.log('Initializing Facebook...');
         $.getScript('//connect.facebook.net/en_US/sdk.js', function () {
@@ -35,6 +37,7 @@ class FacebookManager {
             });
             console.log('Done.');
             this.sdk = FB;
+            if(onLoadCallback != null) onLoadCallback.onLoad();
         });
 
     }
@@ -51,6 +54,10 @@ class FacebookManager {
             }
         });
     }
+}
+
+interface FacebookLoadCallback {
+    onLoad(): void;
 }
 
 class FacebookError extends Error {

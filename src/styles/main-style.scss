@@ -44,6 +44,10 @@ nav {
         line-height: 22px;
         color: $accent-alt !important;
     }
+    .glyphicon-plus {
+        font-size: 16px !important;
+        color: #02C510;
+    }
 }
 
 section {
@@ -62,6 +66,9 @@ section {
 .logo-text {
     font-family: 'logo';
 }
+.logo-text.small {font-size: 12px;}
+.logo-text.medium {font-size: 18px;}
+.logo-text.large {font-size: 24px;}
 
 p {
     @extend .logo-text;
