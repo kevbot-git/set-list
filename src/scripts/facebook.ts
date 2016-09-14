@@ -1,7 +1,7 @@
 /// <reference path="lib/fbsdk.d.ts" />
 
 const APP_ID: string = '159095714518707';
-export var facebookManager: FacebookManager;
+var facebookManager: FacebookManager;
 
 $(document).ready(function () {
     facebookManager = new FacebookManager();
@@ -52,6 +52,7 @@ class FacebookManager {
         });
     }
 }
+
 class FacebookError extends Error {
     constructor() {
         super('Could not connect.');
