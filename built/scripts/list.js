@@ -13,14 +13,6 @@ $(document).ready(function () {
     $('#btnAddItem').click(function () {
         $('#addItemModal').modal('show');
     });
-    $('#isong, #ikey').keypress(function () {
-        if ($('#isong').val() != '' && $('#ikey').val() != '') {
-            $('#btn-add').removeAttr('disabled');
-        }
-        else {
-            $('#btn-add').attr('disabled', 'disabled');
-        }
-    });
     $('#btn-add').click(function () {
         list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
         $('#isong, #ikey').val('');
