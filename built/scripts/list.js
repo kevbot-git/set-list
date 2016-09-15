@@ -13,13 +13,19 @@ $(document).ready(function () {
     $('#btnAddItem').click(function () {
         $('#addItemModal').modal('show');
     });
-    for (var i = 0; i < list.nItems(); i++) {
-        console.log(list.itemAt(i));
-        $('#set-list').append('<li><table width="100%"><tr><td>' + list.itemAt(i).getTitle() +
-            '</td><td>' + list.itemAt(i).getArtist() + '</td><td class="key">' + list.itemAt(i).getKey() +
-            '</td></td><td class="controls"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-wrench"></span></button></td></table></li>');
-    }
-    $('modal input[name=\'search\']').text('TEST');
+    $('#isong, #ikey').keypress(function () {
+        if ($('#isong').val() != '' && $('#ikey').val() != '') {
+            $('#btn-add').removeAttr('disabled');
+        }
+        else {
+            $('#btn-add').attr('disabled', 'disabled');
+        }
+    });
+    $('#btn-add').click(function () {
+        list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
+        $('#isong, #ikey').val('');
+        $('#addItemModal').modal('hide');
+    });
 });
 function searchSpotify(query) {
     var str = '' + encodeURIComponent(query);
@@ -67,6 +73,12 @@ var SetList = (function () {
         this.name = name;
     };
     SetList.prototype.updateItemCount = function () {
+        $('#set-list').html('');
+        for (var i = 0; i < this.items.length; i++) {
+            $('#set-list').append('<li><table width="100%"><tr><td>' + this.itemAt(i).getTitle() +
+                '</td><td>' + this.itemAt(i).getArtist() + '</td><td class="key">' + this.itemAt(i).getKey() +
+                '</td></td><td class="controls"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-wrench"></span></button></td></table></li>');
+        }
         $('#item-count').text('Items: ' + this.items.length);
     };
     return SetList;
