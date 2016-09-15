@@ -29,10 +29,10 @@ $(window).on('scroll', function () {
         headerTitle.css('opacity', 0);
     }
 });
-// $(window).on('load', function() {
-//     console.log('facebookLoaded called');
-//     $('.login-container').append('<p>Test</p>');
-// });
+$(window).on('load', function () {
+    console.log('facebookLoaded called');
+    $('.login-container').append('<p>Logged in? <a href="/dashboard.html">go to Dashboard</a></p>');
+});
 $('.login-link').click(function () {
     $('.login-container').effect('shake', { 'distance': 5, 'times': 2 });
     //checkLoginState();

@@ -28,6 +28,29 @@ nav .glyphicon-plus {
   font-size: 16px !important;
   color: #02C510; }
 
+#set-list {
+  user-select: none;
+  cursor: default; }
+  #set-list li {
+    margin-top: 6px;
+    min-height: 64px;
+    font-size: 24px;
+    line-height: 52px;
+    list-style-type: none;
+    background-color: rgba(245, 245, 255, 0.8);
+    border: 6px solid #888888;
+    border-radius: 5px; }
+    #set-list li table {
+      text-align: left; }
+      #set-list li table td {
+        width: 64px; }
+      #set-list li table td:not(.controls):not(.key) {
+        width: 40%;
+        table-layout: fixed; }
+      #set-list li table td.controls {
+        text-align: right;
+        padding-right: 10px; }
+
 section {
   margin-bottom: 64px;
   text-align: center; }
@@ -39,16 +62,16 @@ section {
   -ms-user-select: none;
   user-select: none; }
 
-.logo-text, p, h1, h2, h3, h4 {
+.logo-text, #set-list li, p, h1, h2, h3, h4 {
   font-family: 'logo'; }
 
-.logo-text.small, p.small, h1.small, h2.small, h3.small, h4.small {
+.logo-text.small, #set-list li.small, p.small, h1.small, h2.small, h3.small, h4.small {
   font-size: 12px; }
 
-.logo-text.medium, p.medium, h1.medium, h2.medium, h3.medium, h4.medium {
+.logo-text.medium, #set-list li.medium, p.medium, h1.medium, h2.medium, h3.medium, h4.medium {
   font-size: 18px; }
 
-.logo-text.large, p.large, h1.large, h2.large, h3.large, h4.large {
+.logo-text.large, #set-list li.large, p.large, h1.large, h2.large, h3.large, h4.large {
   font-size: 24px; }
 
 p {

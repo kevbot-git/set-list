@@ -50,6 +50,39 @@ nav {
     }
 }
 
+#set-list {
+    user-select: none;
+    cursor: default;
+
+    li {
+        @extend .logo-text;
+        margin-top: 6px;
+        min-height: 64px;
+        font-size: 24px;
+        line-height: 52px;
+        list-style-type: none;
+        background-color: rgba(245, 245, 255, 0.8);
+        border: 6px solid #888888;
+        border-radius: 5px;
+
+        table {
+            text-align: left;
+
+            td {
+                width: 64px;
+            }
+            td:not(.controls):not(.key) {
+                width: 40%;
+                table-layout: fixed;
+            }
+            td.controls {
+                text-align: right;
+                padding-right: 10px;
+            }
+        }
+    }
+}
+
 section {
     margin-bottom: 64px;
     text-align: center;

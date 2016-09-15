@@ -1,20 +1,42 @@
 /// <reference path="lib/jquery.d.ts" />
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
+/*
+<tr><th>Title</th><th>Artist</th><th>Key</th></tr>
+*/
 $(document).ready(function () {
     console.log('list time');
     var list = new SetList("Untitled List");
-    list.addItem(new ListItem('Hello', 'Mr. Worldwide', 'Am'));
-    list.addItem(new ListItem('Test', 'Mr. Tester', 'G'));
-    $('#sortable').sortable();
+    list.addItem(new ListItem('Placeholder', 'Mr. Example', 'Am'));
+    list.addItem(new ListItem('Placeholder 2', 'Mr. Tester', 'G'));
+    $('#set-list').sortable({ axis: "y" });
     $('#btnAddItem').click(function () {
         $('#addItemModal').modal('show');
     });
     for (var i = 0; i < list.nItems(); i++) {
         console.log(list.itemAt(i));
-        $('#sortable').append('<li>' + list.itemAt(i).getTitle() + '</li>');
+        $('#set-list').append('<li><table width="100%"><tr><td>' + list.itemAt(i).getTitle() +
+            '</td><td>' + list.itemAt(i).getArtist() + '</td><td class="key">' + list.itemAt(i).getKey() +
+            '</td></td><td class="controls"><button type="button" class="btn btn-danger"><span class="glyphicon glyphicon-wrench"></span></button></td></table></li>');
     }
+    $('modal input[name=\'search\']').text('TEST');
 });
+function searchSpotify(query) {
+    var str = '' + encodeURIComponent(query);
+    $.ajax({
+        url: 'https://api.spotify.com/v1/search',
+        data: {
+            q: str,
+            type: 'track'
+        },
+        success: function (response) {
+            console.log(response);
+            response.tracks.items.forEach(function (a) {
+                console.log(a);
+            });
+        }
+    });
+}
 var SetList = (function () {
     function SetList(name) {
         this.setName(name);
@@ -22,8 +44,13 @@ var SetList = (function () {
     }
     SetList.prototype.addItem = function (item) {
         this.items.push(item);
+        this.updateItemCount();
     };
     SetList.prototype.removeItem = function (item) {
+        if (this.items.indexOf(item) >= 0 && this.items.indexOf(item) < this.items.length) {
+            this.items.splice(this.items.indexOf(item), 1);
+        }
+        this.updateItemCount();
     };
     SetList.prototype.itemAt = function (index) {
         if (index < this.nItems())
@@ -38,6 +65,9 @@ var SetList = (function () {
     };
     SetList.prototype.setName = function (name) {
         this.name = name;
+    };
+    SetList.prototype.updateItemCount = function () {
+        $('#item-count').text('Items: ' + this.items.length);
     };
     return SetList;
 }());
