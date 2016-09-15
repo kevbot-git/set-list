@@ -1,37 +1,33 @@
 /// <reference path="lib/jquery.d.ts" />
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
-/*
-<tr><th>Title</th><th>Artist</th><th>Key</th></tr>
-*/
 $(document).ready(function () {
     console.log('list time');
     var list = new SetList("Untitled List");
-    list.addItem(new ListItem('Placeholder', 'Mr. Example', 'Am'));
-    list.addItem(new ListItem('Placeholder 2', 'Mr. Tester', 'G'));
     $('#set-list').sortable({ axis: "y" });
     $('#btnAddItem').click(function () {
         $('#addItemModal').modal('show');
     });
     $('#btn-add').click(function () {
-        list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
+        //list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
+        searchSpotify($('#isong').val(), $('#ikey').val(), list);
         $('#isong, #ikey').val('');
         $('#addItemModal').modal('hide');
     });
 });
-function searchSpotify(query) {
-    var str = '' + encodeURIComponent(query);
+function searchSpotify(query, key, list) {
     $.ajax({
         url: 'https://api.spotify.com/v1/search',
         data: {
-            q: str,
+            q: query,
             type: 'track'
         },
         success: function (response) {
-            console.log(response);
-            response.tracks.items.forEach(function (a) {
-                console.log(a);
-            });
+            //console.log(response);
+            // response.tracks.items.forEach(function(a: any) {
+            //     console.log(a.name + ' ' + a.artists[0].name);
+            // });
+            list.addItem(ListItem.fromSpotify(response.tracks.items[0], key));
         }
     });
 }
@@ -81,6 +77,9 @@ var ListItem = (function () {
         this.artist = artist;
         this.setKey(key);
     }
+    ListItem.fromSpotify = function (obj, key) {
+        return new ListItem(obj.name, obj.artists[0].name, key);
+    };
     ListItem.prototype.setKey = function (key) {
         this.key = key;
     };

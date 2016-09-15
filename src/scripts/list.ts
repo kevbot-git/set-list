@@ -2,43 +2,36 @@
 /// <reference path="lib/jqueryui.d.ts" />
 /// <reference path="facebook.ts" />
 
-/* 
-<tr><th>Title</th><th>Artist</th><th>Key</th></tr>
-*/
-
-
 $(document).ready(function() {
     console.log('list time');
     var list: SetList = new SetList("Untitled List");
-    list.addItem(new ListItem('Placeholder', 'Mr. Example', 'Am'));
-    list.addItem(new ListItem('Placeholder 2', 'Mr. Tester', 'G'));
     $('#set-list').sortable({ axis: "y" });
     $('#btnAddItem').click(function() {
         $('#addItemModal').modal('show');
     });
 
     $('#btn-add').click(function() {
-        list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
+        //list.addItem(new ListItem($('#isong').val(), '[artist will be found]', $('#ikey').val()));
+        searchSpotify($('#isong').val(), $('#ikey').val(), list);
         $('#isong, #ikey').val('');
         $('#addItemModal').modal('hide');
     });
 });
 
-function searchSpotify(query: string): void {
-    var str: string = '' + encodeURIComponent(query);
-
+function searchSpotify(query: string, key: string, list: SetList): void {
     $.ajax({
         url: 'https://api.spotify.com/v1/search',
         data: {
-            q: str,
+            q: query,
             type: 'track'
         },
         success: function (response) {
-            console.log(response);
-            response.tracks.items.forEach(function(a: any) {
-                console.log(a);
-            });
-        }
+            //console.log(response);
+            // response.tracks.items.forEach(function(a: any) {
+            //     console.log(a.name + ' ' + a.artists[0].name);
+            // });
+            list.addItem(ListItem.fromSpotify(response.tracks.items[0], key));
+        },
     });
 }
 
@@ -95,11 +88,16 @@ class ListItem {
     private title: string;
     private artist: string;
     private key: string;
+    private spotifyItem: any;
 
     public constructor(title: string, artist: string, key: string) {
         this.title = title;
         this.artist = artist;
         this.setKey(key);
+    }
+
+    public static fromSpotify(obj: any, key: string): ListItem {
+        return new ListItem(obj.name, obj.artists[0].name, key);
     }
 
     public setKey(key: string): void {
